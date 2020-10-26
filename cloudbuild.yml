@@ -9,3 +9,5 @@ steps:
   env:
   - 'REACT_APP_BACKEND_URL=${_REACT_APP_BACKEND_URL}'
   - 'NODE_PATH=./src'
+- name: gcr.io/cloud-builders/gsutil
+  args: ["-m", "rsync", "-d", "-r", "build", "gs://siteservicesadmingfront"]
