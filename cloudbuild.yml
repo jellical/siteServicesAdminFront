@@ -6,8 +6,9 @@ steps:
 # Build
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'build']
-  env:
-  - 'REACT_APP_BACKEND_URL=${_REACT_APP_BACKEND_URL}'
-  - 'NODE_PATH=./src'
-- name: gcr.io/cloud-builders/gsutil
-  args: ["-m", "rsync", "-d", "-r", "build", "gs://siteservicesadmingfront"]
+# Deploy
+#- name: 'gcr.io/cloud-builders/gsutil'
+#  args: ["-m", "rsync", "-d", "-r", "build", "gs://siteservicesadmingfront"]
+
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
